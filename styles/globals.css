@@ -1,11 +1,19 @@
 @import 'bootstrap/dist/css/bootstrap.css';
+@import url('https://fonts.googleapis.com/css2?family=Raleway:ital,wght@0,100..900;1,100..900&display=swap');
 
 html,
 body {
-  padding: 0;
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
-    Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+  background-image: url(../public/image-assets/signin_background.png);
+}
+
+#signin-header {
+  color: white;
+  font-family: Raleway;
+  font-weight: 300;
+  letter-spacing: 2px;
+  font-size: 80px;
+  text-shadow: 0px 0px 2px rgb(248, 167, 253);
+  margin-bottom: 11vh;
 }
 
 a {
@@ -19,4 +27,32 @@ a {
 
 body {
   background-color: #88effd;
+}
+
+.landing-buttons {
+  font-family: Raleway;
+  text-shadow: 0px 0px 2px rgb(248, 167, 253);
+  background-color: transparent;
+  border-style: none;
+  width: 50%;
+  color: white;
+  font-size: 22px;
+  text-align: left;
+  padding-left: 4px;
+}
+
+.landing-buttons:hover {
+  background-color: transparent;
+  border-style: none;
+  cursor: pointer;
+}
+
+#github-logo {
+  position: absolute;
+  bottom: 25px;
+  right: 25px;
+}
+
+#github-logo:hover {
+  cursor: pointer;
 }
