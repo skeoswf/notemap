@@ -3,20 +3,23 @@ import { useAuth } from './context/authContext';
 import Loading from '../components/Loading';
 import Signin from '../components/Signin';
 import NavBar from '../components/NavBar';
+import { useRouter } from 'next/router';
+
+const publicRoutes = ['/about'];
 
 const ViewDirectorBasedOnUserAuthStatus = ({ component: Component, pageProps }) => {
   const { user, userLoading } = useAuth();
+  const router = useRouter();
+  const { pathname } = router;
 
-  // if user state is null, then show loader
   if (userLoading) {
     return <Loading />;
   }
 
-  // what the user should see if they are logged in
   if (user) {
     return (
       <>
-        <NavBar /> {/* NavBar only visible if user is logged in and is in every view */}
+        <NavBar />
         <div className="container">
           <Component {...pageProps} />
         </div>
@@ -24,7 +27,11 @@ const ViewDirectorBasedOnUserAuthStatus = ({ component: Component, pageProps }) 
     );
   }
 
-  return <Signin />;
+  if (!user && !publicRoutes.includes(pathname)) {
+    return <Signin />;
+  }
+
+  return <Component {...pageProps} />;
 };
 
 export default ViewDirectorBasedOnUserAuthStatus;
