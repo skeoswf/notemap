@@ -17,7 +17,7 @@ function Signin() {
         }}
       >
         <h1 id="signin-header">notemap</h1>
-        <Button type="button" size="lg" className="copy-btn landing-buttons" onClick={signIn}>
+        <Button type="button" size="lg" className="copy-btn landing-buttons" id="override-active" onClick={signIn}>
           sign in
         </Button>
         <Link passHref href="/about">
