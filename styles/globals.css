@@ -4,6 +4,7 @@
 html,
 body {
   background-image: url(../public/image-assets/signin_background.png);
+  user-select: none;
 }
 
 #signin-header {
@@ -39,13 +40,45 @@ body {
   font-size: 22px;
   text-align: left;
   padding-left: 4px;
+  transition: all ease 0.3s;
 }
 
 .landing-buttons:hover {
   background-color: transparent;
   border-style: none;
   cursor: pointer;
+  text-shadow: 0px 0px 20px rgb(197, 4, 207);
+  color: rgb(252, 200, 255);
 }
+
+.landing-buttons:active {
+  background-color: transparent;
+  border-style: none;
+  cursor: pointer;
+  text-shadow: 0px 0px 20px rgb(248, 117, 255);
+  color: rgb(248, 117, 255);
+  background-color: transparent;
+  border-style: none;
+}
+
+.about-text {
+  font-family: Raleway;
+  text-shadow: 0px 0px 5px rgb(248, 167, 253);
+  color: white;
+  font-size: 22px;
+  width: 30%;
+  text-align: center;
+  margin: 0 auto;
+}
+
+.about-div {
+  margin-top: -6vh;
+}
+
+#override-active:active {
+  background-color: transparent;
+}
+
 
 #github-logo {
   position: absolute;
