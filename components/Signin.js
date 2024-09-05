@@ -6,7 +6,7 @@ import { signIn } from '../utils/auth';
 function Signin() {
   /* eslint-disable @next/next/no-img-element */
   return (
-    <div>
+    <div className="fade-in">
       <div
         className="text-center d-flex flex-column justify-content-center align-content-center signin-div"
         style={{

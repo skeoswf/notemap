@@ -1,6 +1,20 @@
 @import 'bootstrap/dist/css/bootstrap.css';
 @import url('https://fonts.googleapis.com/css2?family=Raleway:ital,wght@0,100..900;1,100..900&display=swap');
 
+
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+.fade-in {
+  animation: fadeIn 1s;
+}
+
 html,
 body {
   background-image: url(../public/image-assets/signin_background.png);
@@ -88,4 +102,16 @@ body {
 
 #github-logo:hover {
   cursor: pointer;
+}
+
+#backarrow {
+  position: absolute;
+  top: 25px;
+  left: 25px;
+  transition: all ease 0.5s;
+}
+
+#backarrow:hover {
+  cursor: pointer;
+  filter: drop-shadow(0px 0px 20px rgb(221, 206, 132))
 }

@@ -1,9 +1,11 @@
 import React from 'react';
+import Link from 'next/link';
 
 function About() {
   return (
+    /* eslint-disable @next/next/no-img-element */
     <div
-      className="text-center"
+      className="text-center fade-in"
       style={{
         backgroundImage: 'url(/image-assets/about_background.png)',
         backgroundSize: 'cover',
@@ -22,6 +24,24 @@ function About() {
         <br />
         notemap was developed by skeo as his frontstone capstone during his time at nashville software school
       </p>
+      <Link passHref href="/">
+        <img
+          src="/image-assets/backarrow.png"
+          id="backarrow"
+          alt="backarrow"
+          width={45}
+          height={45}
+        />
+      </Link>
+      <Link passHref href="https://github.com/skeoswf/notemap">
+        <img
+          src="/image-assets/github-logo-white.png"
+          id="github-logo"
+          alt="github-logo"
+          width={55}
+          height={55}
+        />
+      </Link>
     </div>
   );
 }
