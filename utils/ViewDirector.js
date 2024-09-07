@@ -17,17 +17,13 @@ const ViewDirectorBasedOnUserAuthStatus = ({ component: Component, pageProps }) 
   }
 
   if (user) {
-    return (
-      <>
-        <NavBar />
-        <div className="container">
-          <Component {...pageProps} />
-        </div>
-      </>
-    );
+    document.body.style.backgroundImage = "url('/image-assets/landing_background.png')";
+    document.body.style.backgroundSize = 'cover';
   }
 
   if (!user && !publicRoutes.includes(pathname)) {
+    document.body.style.backgroundImage = "url('/image-assets/signin_background.png')";
+    document.body.style.backgroundSize = 'cover';
     return <Signin />;
   }
 
