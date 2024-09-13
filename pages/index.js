@@ -3,10 +3,25 @@ import Link from 'next/link';
 import { useState, useEffect } from 'react';
 import { signOut } from '../utils/auth';
 import { useAuth } from '../utils/context/authContext';
+import { getAllProfiles } from '../api/profileData';
 
 function Home() {
   const { user } = useAuth();
   console.warn(user);
+
+  const getAllTheProfiles = () => {
+    getAllProfiles()
+      .then((profiles) => {
+        console.warn(profiles); // This will print profiles if fetched correctly
+      })
+      .catch((error) => {
+        console.error('Error fetching profiles:', error); // Handle the error gracefully
+      });
+  };
+
+  useEffect(() => {
+    getAllTheProfiles();
+  }, []);
 
   const [hoverText, setHoverText] = useState('welcome to notemap');
   const [randomPicture, setRandomPicture] = useState('');
