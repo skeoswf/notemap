@@ -1,0 +1,27 @@
+{
+  "profile_roles_test": {
+    "profile_roles_id": "profile_roles_test",
+    "uid": "user uid",
+    "vocalist": true,
+    "guitarist": true,
+    "producer": false,
+    "support": true,
+    "drummer": false,
+    "bassist": false,
+    "keyboard": false,
+    "technician": false,
+    "other": false
+  },
+  "profile_roles_test2": {
+    "profile_roles_id": "profile_roles_test2",
+    "uid": "user uid",
+    "vocalist": false,
+    "guitarist": true,
+    "producer": true,
+    "support": false,
+    "drummer": false,
+    "bassist": false,
+    "keyboard": true,
+    "technician": false,
+    "other": false
+}

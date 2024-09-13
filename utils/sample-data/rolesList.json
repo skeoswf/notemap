@@ -1,0 +1,13 @@
+{
+  "roles": {
+    "1": "vocalist",
+    "2": "guitarist",
+    "3": "producer",
+    "4": "support",
+    "5": "drummer",
+    "6": "bassist",
+    "7": "keyboard",
+    "8": "technician",
+    "9": "other"
+  }
+}

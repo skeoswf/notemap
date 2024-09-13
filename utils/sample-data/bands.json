@@ -1,0 +1,18 @@
+{
+  "band_test": {
+    "band_id": "band_test",
+    "created_by": "date pulled with javascript function on submit",
+    "band_created_date": "date",
+    "band_name": "every other sometimes",
+    "band_image": "string of image url",
+    "private": false
+  },
+  "band_test2": {
+   "band_id": "band_test2",
+    "created_by": "date pulled with javascript function on submit",
+    "band_created_date": "date",
+    "band_name": "gone gate",
+    "band_image": "string of image url",
+    "private": false
+  }
+}

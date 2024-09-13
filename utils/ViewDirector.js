@@ -1,9 +1,8 @@
 import PropTypes from 'prop-types';
+import { useRouter } from 'next/router';
 import { useAuth } from './context/authContext';
 import Loading from '../components/Loading';
 import Signin from '../components/Signin';
-import NavBar from '../components/NavBar';
-import { useRouter } from 'next/router';
 
 const publicRoutes = ['/about'];
 
