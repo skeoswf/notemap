@@ -1,0 +1,18 @@
+{
+  "profile_json_test": {
+    "uid": "profile_json_test",
+    "profile_created_data": "date pulled with javascript function on submit",
+    "username": "user created name",
+    "image": "image url string but id also love to work out a file upload",
+    "state": "string -- a drop down is easiest",
+    "private": "boolean -- will not allow their profile to be viewed if false"
+  },
+  "profile_json_test2": {
+    "uid": "profile_json_test2",
+    "profile_created_data": "date pulled with javascript function on submit2",
+    "username": "user created name2",
+    "image": "image url string but id also love to work out a file upload2",
+    "state": "string -- a drop down is easiest2",
+    "private": "boolean -- will not allow their profile to be viewed if false2"
+  }
+}

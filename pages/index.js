@@ -8,7 +8,7 @@ function Home() {
   const { user } = useAuth();
   console.warn(user);
 
-  const [hoverText, setHoverText] = useState('notemap');
+  const [hoverText, setHoverText] = useState('welcome to notemap');
   const [randomPicture, setRandomPicture] = useState('');
 
   useEffect(() => {
@@ -27,6 +27,12 @@ function Home() {
         setRandomPicture('/image-assets/landing_amp.png');
     }
   }, []);
+
+  useEffect(() => {
+    if (user && user.displayName) {
+      setHoverText(`welcome to notemap, ${user.displayName.toLowerCase()}`);
+    }
+  }, [user]);
 
   return (
     /* eslint-disable @next/next/no-img-element */

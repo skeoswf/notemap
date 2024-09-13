@@ -150,6 +150,7 @@ body {
 .landing-circle:hover {
   background-color: rgba(115, 170, 170, 1);
   box-shadow: 0px 0px 10px rgb(213, 233, 241);
+  text-shadow: 0px 0px 5px rgb(75, 75, 75);
   cursor: pointer;
 }
 
