@@ -1,6 +1,4 @@
-import { clientCredentials } from '../utils/client';
-
-const endpoint = clientCredentials.databaseURL;
+const endpoint = 'https://notemap-b0e1d-default-rtdb.firebaseio.com/';
 
 const getUserProfile = (uid) => new Promise((resolve, reject) => {
   fetch(`${endpoint}/profiles.json?orderBy="uid"&equalTo="${uid}"`, {
@@ -15,12 +13,7 @@ const getUserProfile = (uid) => new Promise((resolve, reject) => {
 });
 
 const getAllProfiles = () => new Promise((resolve, reject) => {
-  if (!endpoint) {
-    reject(new Error('API enasdasddpoint is not defined'));
-    return; // Exit early if endpoint is not defined
-  }
-
-  fetch(`${endpoint}/profile_roles.json`, {
+  fetch(`${endpoint}/profiles.json`, {
     method: 'GET',
     headers: {
       'Content-Type': 'application/json',

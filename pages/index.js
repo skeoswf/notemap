@@ -1,27 +1,31 @@
 import { Button } from 'react-bootstrap';
+import { useRouter } from 'next/router';
 import Link from 'next/link';
 import { useState, useEffect } from 'react';
 import { signOut } from '../utils/auth';
 import { useAuth } from '../utils/context/authContext';
-import { getAllProfiles } from '../api/profileData';
+import { getUserProfile } from '../api/profileData';
 
 function Home() {
   const { user } = useAuth();
+  const router = useRouter();
   console.warn(user);
 
-  const getAllTheProfiles = () => {
-    getAllProfiles()
+  const checkUserProfile = () => {
+    getUserProfile()
       .then((profiles) => {
-        console.warn(profiles); // This will print profiles if fetched correctly
+        if (profiles.length < 1) {
+          router.push('/profileCreation');
+        }
       })
       .catch((error) => {
-        console.error('Error fetching profiles:', error); // Handle the error gracefully
+        console.error('Error fetching profiles:', error);
       });
   };
 
   useEffect(() => {
-    getAllTheProfiles();
-  }, []);
+    checkUserProfile();
+  });
 
   const [hoverText, setHoverText] = useState('welcome to notemap');
   const [randomPicture, setRandomPicture] = useState('');
