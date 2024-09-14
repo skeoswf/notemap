@@ -1,7 +1,19 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import Link from 'next/link';
+import { getAllBands } from '../api/bandsData';
+import BandCard from '../components/BandCard';
 
 function Bands() {
+  const [bands, setBands] = useState([]);
+
+  const getAllTheBands = () => {
+    getAllBands().then(setBands);
+  };
+
+  useEffect(() => {
+    getAllTheBands();
+  }, []);
+
   return (
     /* eslint-disable @next/next/no-img-element */
     <div
@@ -14,7 +26,14 @@ function Bands() {
         margin: '0 auto',
       }}
     >
-      <h1 id="signin-header">bands text</h1>
+      <h1 id="signin-header">bands</h1>
+
+      <div className="d-flex flex-wrap">
+        {bands.map((band) => (
+          <BandCard key={band.band_id} bandObj={band} onUpdate={getAllTheBands} />
+        ))}
+      </div>
+
       <Link passHref href="/">
         <img
           src="/image-assets/backarrow.png"
