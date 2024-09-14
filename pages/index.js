@@ -1,5 +1,5 @@
 import { Button } from 'react-bootstrap';
-import { useRouter } from 'next/router';
+// import { useRouter } from 'next/router';
 import Link from 'next/link';
 import { useState, useEffect } from 'react';
 import { signOut } from '../utils/auth';
@@ -8,25 +8,9 @@ import { getUserProfile } from '../api/profileData';
 
 function Home() {
   const { user } = useAuth();
-  const router = useRouter();
-  console.warn(user);
+  // const router = useRouter();
 
-  const checkUserProfile = () => {
-    getUserProfile()
-      .then((profiles) => {
-        if (profiles.length < 1) {
-          router.push('/profileCreation');
-        }
-      })
-      .catch((error) => {
-        console.error('Error fetching profiles:', error);
-      });
-  };
-
-  useEffect(() => {
-    checkUserProfile();
-  });
-
+  const [profile, setProfile] = useState('');
   const [hoverText, setHoverText] = useState('welcome to notemap');
   const [randomPicture, setRandomPicture] = useState('');
 
@@ -48,10 +32,25 @@ function Home() {
   }, []);
 
   useEffect(() => {
+    const checkUserProfile = () => {
+      getUserProfile(user.uid)
+        .then((profiles) => {
+          console.warn('profiles:', profiles);
+          if (profiles.length > 0) {
+            setProfile(profiles[0]);
+            setHoverText(`welcome to notemap, ${profiles[0].username}`);
+            console.warn('user profile:', profiles[0]);
+          }
+        })
+        .catch((error) => {
+          console.error('error fetching profiles:', error);
+        });
+    };
     if (user && user.displayName) {
-      setHoverText(`welcome to notemap, ${user.displayName.toLowerCase()}`);
+      checkUserProfile();
+      setHoverText(`welcome to notemap, ${profile.username}`);
     }
-  }, [user]);
+  }, [user, profile.username]);
 
   return (
     /* eslint-disable @next/next/no-img-element */

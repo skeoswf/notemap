@@ -190,3 +190,15 @@ body {
   font-size: 20px;
   font-family: Raleway;
 }
+
+#profile-creation-form {
+  width: 50%;
+  margin: 0 auto;
+}
+
+.form-switch {
+  display: flex;
+  justify-content: space-around;
+  width: 100px;
+  margin: 0 auto;
+}

@@ -1,7 +1,7 @@
 const endpoint = 'https://notemap-b0e1d-default-rtdb.firebaseio.com/';
 
-const getUserProfile = (uid) => new Promise((resolve, reject) => {
-  fetch(`${endpoint}/profiles.json?orderBy="uid"&equalTo="${uid}"`, {
+const getAllBands = () => new Promise((resolve, reject) => {
+  fetch(`${endpoint}/bands.json`, {
     method: 'GET',
     headers: {
       'Content-Type': 'application/json',
@@ -12,8 +12,8 @@ const getUserProfile = (uid) => new Promise((resolve, reject) => {
     .catch(reject);
 });
 
-const getAllProfiles = () => new Promise((resolve, reject) => {
-  fetch(`${endpoint}/profiles.json`, {
+const getUserBands = (uid) => new Promise((resolve, reject) => {
+  fetch(`${endpoint}/bands.json?orderBy="created_by"&equalTo="${uid}"`, {
     method: 'GET',
     headers: {
       'Content-Type': 'application/json',
@@ -24,26 +24,24 @@ const getAllProfiles = () => new Promise((resolve, reject) => {
     .catch(reject);
 });
 
-const createProfile = (payload) => new Promise((resolve, reject) => {
-  fetch(`${endpoint}/profiles.json`, {
-    method: 'POST',
+const getSingleBand = (bandId) => new Promise((resolve, reject) => {
+  fetch(`${endpoint}/bands/${bandId}.json/`, {
+    method: 'GET',
     headers: {
       'Content-Type': 'application/json',
     },
-    body: JSON.stringify(payload),
   })
     .then((response) => response.json())
     .then((data) => resolve(data))
     .catch(reject);
 });
 
-const updateProfile = (payload) => new Promise((resolve, reject) => {
-  fetch(`${endpoint}/profiles/${payload.uid}.json`, {
-    method: 'PATCH',
+const deleteBand = (bandId) => new Promise((resolve, reject) => {
+  fetch(`${endpoint}/bands/${bandId}.json/`, {
+    method: 'DELETE',
     headers: {
       'Content-Type': 'application/json',
     },
-    body: JSON.stringify(payload),
   })
     .then((response) => response.json())
     .then((data) => resolve(data))
@@ -51,5 +49,5 @@ const updateProfile = (payload) => new Promise((resolve, reject) => {
 });
 
 export {
-  getUserProfile, getAllProfiles, createProfile, updateProfile,
+  getAllBands, getUserBands, deleteBand, getSingleBand,
 };
