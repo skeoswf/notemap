@@ -3,22 +3,21 @@ import PropTypes from 'prop-types';
 import Link from 'next/link';
 import { Button, Card } from 'react-bootstrap';
 import { deleteBand } from '../api/bandsData';
-import { getUserProfile } from '../api/profileData';
 
-function BandCard({ bandObj, onUpdate }) {
+function BandCard({ bandObj, onUpdate, profileObj }) {
+  console.warn('BandCard profileObj:', profileObj);
   const deleteThisBand = () => {
-    getUserProfile().then((profile) => {
-      if (!(bandObj.created_by === profile.username)) {
-        alert('this not ya band man');
-      } else if (window.confirm('delete this band?') && bandObj.created_by === profile.username) {
-        deleteBand(bandObj.band_id).then(() => onUpdate());
-      }
-    });
+    // Use the profileObj prop directly instead of calling getUserProfile()
+    if (bandObj.created_by !== profileObj[0].username) {
+      alert('this not ya band man');
+    } else if (window.confirm('delete this band?')) {
+      deleteBand(bandObj.band_id).then(() => onUpdate());
+    }
   };
 
   return (
-    <Card style={{ width: '18rem', margin: '10px' }}>
-      <Card.Img variant="top" src={bandObj.band_image} alt={bandObj.band_name} style={{ height: '400px' }} />
+    <Card style={{ width: '16rem', margin: '10px' }}>
+      <Card.Img variant="top" src={bandObj.band_image} alt={bandObj.band_name} style={{ height: '200px' }} />
       <Card.Body>
         <Card.Title>{bandObj.band_name}</Card.Title>
         <p>created by: {bandObj.created_by}</p>
@@ -47,6 +46,9 @@ BandCard.propTypes = {
     band_name: PropTypes.string,
     band_image: PropTypes.string,
     created_by: PropTypes.string,
+  }).isRequired,
+  profileObj: PropTypes.shape({
+    username: PropTypes.string,
   }).isRequired,
   onUpdate: PropTypes.func.isRequired,
 };

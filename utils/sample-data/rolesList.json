@@ -1,13 +1,38 @@
 {
-  "roles": {
-    "1": "vocalist",
-    "2": "guitarist",
-    "3": "producer",
-    "4": "support",
-    "5": "drummer",
-    "6": "bassist",
-    "7": "keyboard",
-    "8": "technician",
-    "9": "other"
+  "role1": {
+    "role_id": 1,
+    "role": "vocalist"
+  },
+  "role2": {
+    "role_id": 2,
+    "role": "guitarist"
+  },
+  "role3": {
+    "role_id": 3,
+    "role": "guitarist"
+  },
+  "role4": {
+    "role_id": 4,
+    "role": "guitarist"
+  },
+  "role5": {
+    "role_id": 5,
+    "role": "guitarist"
+  },
+  "role6": {
+    "role_id": 6,
+    "role": "guitarist"
+  },
+  "role7": {
+    "role_id": 6,
+    "role": "guitarist"
+  },
+  "role8": {
+    "role_id": 6,
+    "role": "guitarist"
+  },
+  "role9": {
+    "role_id": 6,
+    "role": "guitarist"
   }
 }

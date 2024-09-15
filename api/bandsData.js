@@ -48,6 +48,32 @@ const deleteBand = (bandId) => new Promise((resolve, reject) => {
     .catch(reject);
 });
 
+const createBand = (payload) => new Promise((resolve, reject) => {
+  fetch(`${endpoint}/bands.json`, {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify(payload),
+  })
+    .then((response) => response.json())
+    .then((data) => resolve(data))
+    .catch(reject);
+});
+
+const updateBand = (payload) => new Promise((resolve, reject) => {
+  fetch(`${endpoint}/bands/${payload.band_id}.json`, {
+    method: 'PATCH',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify(payload),
+  })
+    .then((response) => response.json())
+    .then((data) => resolve(data))
+    .catch(reject);
+});
+
 export {
-  getAllBands, getUserBands, deleteBand, getSingleBand,
+  getAllBands, getUserBands, deleteBand, getSingleBand, createBand, updateBand,
 };

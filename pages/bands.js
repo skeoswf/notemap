@@ -1,10 +1,14 @@
 import React, { useEffect, useState } from 'react';
 import Link from 'next/link';
 import { getAllBands } from '../api/bandsData';
+import { getUserProfile } from '../api/profileData';
 import BandCard from '../components/BandCard';
+import { useAuth } from '../utils/context/authContext';
 
 function Bands() {
   const [bands, setBands] = useState([]);
+  const [profile, setProfile] = useState({});
+  const { user } = useAuth();
 
   const getAllTheBands = () => {
     getAllBands().then(setBands);
@@ -12,8 +16,17 @@ function Bands() {
 
   useEffect(() => {
     getAllTheBands();
-  }, []);
 
+    const getUserProfileData = () => {
+      getUserProfile(user.uid).then(setProfile);
+    };
+
+    if (user?.uid) { // Check if user and user.uid are defined
+      getUserProfileData();
+    }
+  }, [user.uid]);
+
+  console.warn('user profile', profile);
   return (
     /* eslint-disable @next/next/no-img-element */
     <div
@@ -27,10 +40,11 @@ function Bands() {
       }}
     >
       <h1 id="signin-header">bands</h1>
+      <Link passHref href="/bandForm"><span id="new-band">create your own band</span></Link>
 
       <div className="d-flex flex-wrap">
         {bands.map((band) => (
-          <BandCard key={band.band_id} bandObj={band} onUpdate={getAllTheBands} />
+          <BandCard key={band.band_id} bandObj={band} profileObj={profile} onUpdate={getAllTheBands} />
         ))}
       </div>
 
