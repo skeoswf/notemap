@@ -191,7 +191,7 @@ body {
   font-family: Raleway;
 }
 
-#profile-creation-form {
+#profile-creation-form, #band-creation-form {
   width: 50%;
   margin: 0 auto;
 }
@@ -201,4 +201,13 @@ body {
   justify-content: space-around;
   width: 100px;
   margin: 0 auto;
+}
+
+#new-band {
+  color: white;
+}
+
+#new-band:hover {
+  color: white;
+  cursor: pointer;
 }
