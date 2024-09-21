@@ -9,30 +9,30 @@
   },
   "role3": {
     "role_id": 3,
-    "role": "guitarist"
+    "role": "producer"
   },
   "role4": {
     "role_id": 4,
-    "role": "guitarist"
+    "role": "drummer"
   },
   "role5": {
     "role_id": 5,
-    "role": "guitarist"
+    "role": "bassist"
   },
   "role6": {
     "role_id": 6,
-    "role": "guitarist"
+    "role": "keyboardist"
   },
   "role7": {
-    "role_id": 6,
-    "role": "guitarist"
+    "role_id": 7,
+    "role": "technician"
   },
   "role8": {
-    "role_id": 6,
-    "role": "guitarist"
+    "role_id": 8,
+    "role": "backup vocalist"
   },
   "role9": {
-    "role_id": 6,
-    "role": "guitarist"
+    "role_id": 9,
+    "role": "other"
   }
 }
