@@ -21,7 +21,7 @@ function Bands() {
       getUserProfile(user.uid).then(setProfile);
     };
 
-    if (user?.uid) { // Check if user and user.uid are defined
+    if (user?.uid) {
       getUserProfileData();
     }
   }, [user.uid]);
@@ -41,6 +41,7 @@ function Bands() {
     >
       <h1 id="signin-header">bands</h1>
       <Link passHref href="/bandForm"><span id="new-band">create your own band</span></Link>
+      <Link passHref href="/roleForm"><span id="new-band">create new role</span></Link>
 
       <div className="d-flex flex-wrap">
         {bands.map((band) => (

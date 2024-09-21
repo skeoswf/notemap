@@ -6,24 +6,27 @@ import PropTypes from 'prop-types';
 import { useAuth } from '../utils/context/authContext';
 import { createBand, updateBand } from '../api/bandsData';
 import { getUserProfile } from '../api/profileData';
-// import { getRoles } from '../api/rolesData';
+import { getRoles } from '../api/rolesData';
 
 const initialState = {
-  band_created_date: '',
-  band_id: '',
   band_image: '',
   band_name: '',
-  created_by: '',
+  role: '',
   private: false,
 };
 
 function BandForm({ obj }) {
   const [formInput, setFormInput] = useState(initialState);
   const [profile, setProfile] = useState({});
-  // const [roles, setRoles] = useState([]);
-  // const [selectedRoles, setSelectedRoles] = useState([]);
+  const [roles, setRoles] = useState([]);
   const router = useRouter();
   const { user } = useAuth();
+
+  useEffect(() => {
+    getUserProfile(user.uid).then(setProfile);
+    getRoles().then(setRoles);
+    if (obj.band_id)setFormInput(obj);
+  }, [obj, user]);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -33,22 +36,18 @@ function BandForm({ obj }) {
     }));
   };
 
-  useEffect(() => {
-    getUserProfile(user.uid).then(setProfile);
-  }, [obj, user]);
-
   const handleSubmit = (e) => {
     e.preventDefault();
     console.warn('Profile on submit:', profile);
     if (obj.band_id) {
-      console.warn('test');
+      updateBand(formInput).then(() => router.push('/bands'));
     } else {
       const currentTime = new Date().toISOString();
-      const payload = { ...formInput, band_created_date: currentTime, created_by: profile[0]?.username };
+      const payload = { ...formInput, band_created_date: currentTime, created_by: profile[0].username };
       createBand(payload).then(({ name }) => {
         const patchPayload = { band_id: name };
         updateBand(patchPayload).then(() => {
-          router.push('/');
+          router.push('/bands');
         });
       });
     }
@@ -67,7 +66,7 @@ function BandForm({ obj }) {
         margin: '0 auto',
       }}
     >
-      <h1 id="signin-header">new band</h1>
+      <h1 id="signin-header">{(obj.band_id) ? 'update' : 'create'} band</h1>
 
       <Form onSubmit={handleSubmit} id="band-creation-form">
 
@@ -79,8 +78,24 @@ function BandForm({ obj }) {
           <Form.Control type="text" placeholder="image url" name="band_image" value={formInput.band_image} onChange={handleChange} required />
         </FloatingLabel>
 
+        <FloatingLabel controlId="floatingSelect" label="role">
+          <Form.Select
+            aria-label="location"
+            name="role"
+            onChange={handleChange}
+            className="mb-3"
+            value={formInput.role}
+            required
+          >
+            {roles.map((role) => (
+              <option key={role.firebaseKey} value={role.firebaseKey}>
+                {role.role_name}
+              </option>
+            ))}
+          </Form.Select>
+        </FloatingLabel>
+
         <Form.Check
-          id="band-private-select"
           className="text-white mb-3"
           type="switch"
           name="private"
@@ -116,11 +131,12 @@ function BandForm({ obj }) {
 BandForm.propTypes = {
   obj: PropTypes.shape({
     band_created_date: PropTypes.string,
-    band_id: PropTypes.bool,
+    band_id: PropTypes.string,
     band_image: PropTypes.string,
-    band_name: PropTypes.string,
+    band_name: PropTypes.string.isRequired,
     created_by: PropTypes.string,
     private: PropTypes.bool,
+    role: PropTypes.string,
   }),
 };
 

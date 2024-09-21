@@ -75,7 +75,7 @@ function ProfileCreation({ obj }) {
             label="location"
             required
           >
-            <option value="" disabled>select your state</option>
+            <option value="" disabled>select your role</option>
             <option value="alabama">alabama</option>
             <option value="alaska">alaska</option>
             <option value="arizona">arizona</option>

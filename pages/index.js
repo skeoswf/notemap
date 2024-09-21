@@ -1,5 +1,5 @@
 import { Button } from 'react-bootstrap';
-// import { useRouter } from 'next/router';
+import { useRouter } from 'next/router';
 import Link from 'next/link';
 import { useState, useEffect } from 'react';
 import { signOut } from '../utils/auth';
@@ -8,7 +8,7 @@ import { getUserProfile } from '../api/profileData';
 
 function Home() {
   const { user } = useAuth();
-  // const router = useRouter();
+  const Router = useRouter();
 
   const [profile, setProfile] = useState('');
   const [hoverText, setHoverText] = useState('welcome to notemap');
@@ -40,6 +40,8 @@ function Home() {
             setProfile(profiles[0]);
             setHoverText(`welcome to notemap, ${profiles[0].username}`);
             console.warn('user profile:', profiles[0]);
+          } else {
+            Router.push('/profileCreation');
           }
         })
         .catch((error) => {
@@ -50,7 +52,7 @@ function Home() {
       checkUserProfile();
       setHoverText(`welcome to notemap, ${profile.username}`);
     }
-  }, [user, profile.username]);
+  }, [user, profile.username, Router]);
 
   return (
     /* eslint-disable @next/next/no-img-element */
