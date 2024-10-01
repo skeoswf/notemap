@@ -32,7 +32,7 @@ function Bands() {
     <div
       className="text-center fade-in"
       style={{
-        backgroundImage: 'url(/image-assets/landing_background.png)',
+        backgroundImage: 'url(/image-assets/bands_background.png)',
         backgroundSize: 'cover',
         height: '100vh',
         paddingTop: '14vh',

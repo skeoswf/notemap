@@ -216,3 +216,36 @@ body {
   width: 100px;
   height: 100px;
 }
+
+ .form-control, .mb-3, button {
+  background-color: rgba(192, 250, 250, 0.637) !important;
+  color: rgb(22, 120, 145) !important;
+  text-align: center !important;
+  border-style: none !important;
+  border-radius: 15px !important;
+}
+
+option {
+  background-color: rgba(112, 112, 112, 0.459);
+}
+
+#profile-button {
+  margin-top: 40px;
+  height: 30px;
+  width: 300px;
+  transition: all ease 0.5s;
+}
+
+#profile-button:hover {  
+  background-color: rgba(192, 250, 250, 0.842) !important;
+  color: rgb(16, 93, 112) ;
+}
+
+input[type="text"] {
+  padding-bottom: 20px !important;
+}
+
+.form-switch {
+  margin-top: 40px !important;
+  width: 120px !important;
+}
