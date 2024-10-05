@@ -34,7 +34,9 @@ function ProfileCreation({ obj }) {
       console.warn('test');
     } else {
       const currentTime = new Date().toISOString();
-      const payload = { ...formInput, uid: user.uid, profile_created_data: currentTime };
+      const payload = {
+        ...formInput, uid: user.uid, profile_created_data: currentTime, email: user.email,
+      };
       createProfile(payload).then(() => {
         router.push('/');
       });
@@ -47,18 +49,18 @@ function ProfileCreation({ obj }) {
     <div
       className="text-center fade-in"
       style={{
-        backgroundImage: 'url(/image-assets/landing_background.png)',
+        backgroundImage: 'url(/image-assets/profile_create_background.png)',
         backgroundSize: 'cover',
         height: '100vh',
         paddingTop: '14vh',
         margin: '0 auto',
       }}
     >
-      <h1 id="signin-header">create your profile, {user.displayName.toLowerCase()}</h1>
+      <h1 id="signin-header">create your profile</h1>
 
       <Form onSubmit={handleSubmit} id="profile-creation-form">
         <FloatingLabel controlId="floatingInput1" label="username" className="mb-3">
-          <Form.Control type="text" placeholder="enter your username" name="username" value={formInput.username} onChange={handleChange} required />
+          <Form.Control type="text" placeholder="enter your username" name="username" value={formInput.username} onChange={handleChange} className="skeo-test" required />
         </FloatingLabel>
 
         <FloatingLabel controlId="floatingInput1" label="image url" className="mb-3">
@@ -75,7 +77,7 @@ function ProfileCreation({ obj }) {
             label="location"
             required
           >
-            <option value="" disabled>select your role</option>
+            <option value="" disabled>select your state</option>
             <option value="alabama">alabama</option>
             <option value="alaska">alaska</option>
             <option value="arizona">arizona</option>
@@ -144,7 +146,7 @@ function ProfileCreation({ obj }) {
           }}
         />
 
-        <button type="submit">
+        <button type="submit" id="profile-button">
           {obj.uid ? 'update' : 'create'} profile
         </button>
       </Form>

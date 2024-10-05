@@ -80,9 +80,9 @@ function Home() {
           <Link passHref href="/gigs">
             <div
               className="landing-circle"
-              onMouseOver={() => setHoverText('see and edit your upcoming gigs')}
-              onFocus={() => setHoverText('see and edit your upcoming gigs')}
-            >gigs
+              onMouseOver={() => setHoverText('see and edit the bands youve created')}
+              onFocus={() => setHoverText('see and edit the bands youve created')}
+            >your bands
             </div>
           </Link>
         </div>
@@ -103,7 +103,7 @@ function Home() {
         </div>
 
         <div className="circle-div">
-          <Link passHref href="/profile">
+          <Link passHref href={`${profile.username}`}>
             <div
               className="landing-circle"
               onMouseOver={() => setHoverText('view your profile and manage connections')}

@@ -59,7 +59,7 @@ function BandForm({ obj }) {
     <div
       className="text-center fade-in"
       style={{
-        backgroundImage: 'url(/image-assets/landing_background.png)',
+        backgroundImage: 'url(/image-assets/band_creation_background.png)',
         backgroundSize: 'cover',
         height: '100vh',
         paddingTop: '14vh',
@@ -115,7 +115,7 @@ function BandForm({ obj }) {
 
       </Form>
 
-      <Link passHref href="/">
+      <Link passHref href="/bands">
         <img
           src="/image-assets/backarrow.png"
           id="backarrow"

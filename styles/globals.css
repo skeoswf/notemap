@@ -191,7 +191,7 @@ body {
   font-family: Raleway;
 }
 
-#profile-creation-form, #band-creation-form {
+#profile-creation-form, #band-creation-form, #role-form{
   width: 50%;
   margin: 0 auto;
 }
@@ -205,14 +205,88 @@ body {
 
 #new-band {
   color: white;
+  margin-bottom: 100px;
+  font-size: 20px;
+  padding-left: 20px;
+  padding-right: 20px;
 }
 
 #new-band:hover {
-  color: white;
   cursor: pointer;
+  border-left: solid red;
 }
 
 .rolesTest p{
   width: 100px;
   height: 100px;
+}
+
+ .form-control, .mb-3 {
+  background-color: rgba(192, 250, 250, 0.637) !important;
+  color: rgb(13, 70, 85) !important;
+  text-align: center !important;
+  border-style: none !important;
+  border-radius: 15px !important;
+}
+
+option {
+  background-color: rgba(112, 112, 112, 0.459);
+}
+
+#profile-button {
+  margin-top: 40px;
+  height: 30px;
+  width: 300px;
+  transition: all ease 0.5s;
+}
+
+#profile-button:hover {  
+  background-color: rgba(192, 250, 250, 0.842) !important;
+  color: rgb(16, 93, 112) ;
+}
+
+input[type="text"] {
+  padding-bottom: 20px !important;
+}
+
+button {
+  background-color: rgb(91, 190, 136);
+  border-radius: 10px;
+  outline-style: none;
+  border-style: none;
+  color: rgb(255, 255, 255);
+  text-shadow: 0px 0px 2px black;
+  width: 200px;
+}
+
+.form-switch {
+  margin-top: 40px !important;
+  width: 120px !important;
+}
+
+#profile-image {
+  width: 300px;
+  height: 300px;
+  border-radius: 30px;
+}
+
+#profile-username {
+  color: white;
+  font-family: Raleway;
+  font-weight: 300;
+  letter-spacing: 2px;
+  font-size: 80px;
+  text-shadow: 0px 0px 2px rgba(16, 5, 17, 0.247);
+  margin-top: -40px;
+}
+
+.card-body {
+  background-color: rgba(255, 253, 208, 0.384);
+  color: rgb(0, 0, 0);
+  font-family: Raleway;
+}
+
+.band-contact {
+  background-color: rgb(88, 168, 88);
+  border-style: none;
 }

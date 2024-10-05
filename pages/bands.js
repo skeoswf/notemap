@@ -32,7 +32,7 @@ function Bands() {
     <div
       className="text-center fade-in"
       style={{
-        backgroundImage: 'url(/image-assets/landing_background.png)',
+        backgroundImage: 'url(/image-assets/bands_background.png)',
         backgroundSize: 'cover',
         height: '100vh',
         paddingTop: '14vh',
@@ -40,8 +40,9 @@ function Bands() {
       }}
     >
       <h1 id="signin-header">bands</h1>
-      <Link passHref href="/bandForm"><span id="new-band">create your own band</span></Link>
       <Link passHref href="/roleForm"><span id="new-band">create new role</span></Link>
+      <br />
+      <Link passHref href="/bandForm"><span id="new-band">create your own band</span></Link>
 
       <div className="d-flex flex-wrap">
         {bands.map((band) => (
