@@ -18,27 +18,29 @@ function BandCard({
     }
   };
 
-  // const [bandRoles, setBandRoles] = useState([]);
   const [singleRole, setSingleRole] = useState({});
 
   useEffect(() => {
-    // getAllBandRoles(bandObj.band_id).then((BandRoles) => {
-    //   console.warn('BandRoles:', BandRoles);
-    //   setBandRoles(bandRoles);
-    // });
     getSingleRole(bandObj.role).then((singleRoleObj) => {
       setSingleRole(singleRoleObj);
     });
   }, [bandObj.band_id, singleRole, bandObj.role]);
 
   return (
-    <Card style={{ width: '16rem', margin: '10px' }}>
+    <Card style={{
+      width: '16rem', margin: '35px', marginTop: '100px', marginLeft: '100px',
+    }}
+    >
       <Card.Img variant="top" src={bandObj.band_image} alt={bandObj.band_name} style={{ height: '200px' }} />
       <Card.Body>
         <Card.Title>{bandObj.band_name}</Card.Title>
-        <p>created by {bandObj.created_by}</p>
-        <p>{singleRole.role_name}</p>
-        <p>{singleRole.role_description}</p>
+        <p>created by {bandObj.created_by}
+          <br />
+        </p>
+        <p> <span style={{ textDecoration: 'underline' }}>{singleRole.role_name} </span>
+          <br />
+          {singleRole.role_description}
+        </p>
 
         {/* <div className="d-flex flex-wrap rolesTest">
           {bandRoles.length === 0 ? (
@@ -52,21 +54,33 @@ function BandCard({
           )}
         </div> */}
 
-        <Link href={`/bands/${bandObj.band_id}`} passHref>
+        <Link href={bandObj.created_by} passHref>
           <Button
             variant="primary"
-            className="m-2"
+            className="m-2 band-contact"
+            hidden={bandObj.created_by === profileObj[0]?.username}
+            style={{
+              width: '200px',
+            }}
+            id="band-contact"
           >
-            View
+            contact band creator
           </Button>
         </Link>
 
         <Link href={`/bands/edit/${bandObj.band_id}`} passHref>
-          <Button variant="info" hidden={bandObj.created_by !== profileObj[0]?.username}>Edit</Button>
+          <Button
+            variant="info"
+            hidden={bandObj.created_by !== profileObj[0]?.username}
+            style={{
+              width: '200px',
+            }}
+          >edit
+          </Button>
         </Link>
 
         <Button variant="danger" onClick={deleteThisBand} className="m-2" hidden={bandObj.created_by !== profileObj[0]?.username}>
-          Delete
+          delete
         </Button>
       </Card.Body>
     </Card>

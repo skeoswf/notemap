@@ -53,8 +53,8 @@ function RoleForm({ obj }) {
         margin: '0 auto',
       }}
     >
-      <Form onSubmit={handleSubmit}>
-        <h2 className="text-white mt-5"> create role </h2>
+      <Form onSubmit={handleSubmit} id="role-form">
+        <h2 className="text-white mt-5" id="signin-header"> create role </h2>
         <FloatingLabel controlId="floatingInput1" label="role name" className="mb-3">
           <Form.Control type="text" placeholder="enter the role name" name="role_name" value={formInput.role_name} onChange={handleChange} required />
         </FloatingLabel>
@@ -68,7 +68,7 @@ function RoleForm({ obj }) {
         </button>
       </Form>
 
-      <Link passHref href="/">
+      <Link passHref href="/bands">
         <img
           src="/image-assets/backarrow.png"
           id="backarrow"

@@ -40,8 +40,9 @@ function Bands() {
       }}
     >
       <h1 id="signin-header">bands</h1>
-      <Link passHref href="/bandForm"><span id="new-band">create your own band</span></Link>
       <Link passHref href="/roleForm"><span id="new-band">create new role</span></Link>
+      <br />
+      <Link passHref href="/bandForm"><span id="new-band">create your own band</span></Link>
 
       <div className="d-flex flex-wrap">
         {bands.map((band) => (

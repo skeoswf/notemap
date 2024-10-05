@@ -34,7 +34,9 @@ function ProfileCreation({ obj }) {
       console.warn('test');
     } else {
       const currentTime = new Date().toISOString();
-      const payload = { ...formInput, uid: user.uid, profile_created_data: currentTime };
+      const payload = {
+        ...formInput, uid: user.uid, profile_created_data: currentTime, email: user.email,
+      };
       createProfile(payload).then(() => {
         router.push('/');
       });
